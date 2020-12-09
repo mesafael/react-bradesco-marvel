@@ -8,6 +8,7 @@ export const ListHeroes = () => {
   const [heroes, setHeroes] = useState([]);
 
   useEffect(() => {
+    console.log(`oi`);
     getHeroes().then((items) => {
       setHeroes(items.data.results);
     });

@@ -1,6 +1,12 @@
 import React from "react";
 import { ListHeroes } from "../componentes/listHeroes/ListHeroes";
+import { Header } from "../componentes/header/Header";
 
 export const Home = () => {
-  return <ListHeroes />;
+  return (
+    <>
+      <Header />
+      <ListHeroes />
+    </>
+  );
 };
