@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 export const Search = () => {
-  console.log(`oi`);
   return (
     <WrapperSearch>
       <h3>Busca de Personagens</h3>
