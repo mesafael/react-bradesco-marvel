@@ -52,4 +52,5 @@ body,#root{
   display: flex;
   width: 100%;
   flex-direction: column;
+  font-family: 'Roboto', sans-serif;
 }

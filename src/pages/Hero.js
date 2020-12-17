@@ -2,28 +2,71 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
-import { getHero } from "../componentes/listHeroes/ListHeroes.servive";
+import { getHero } from "../services/HeroService";
 import { Header } from "../componentes/header/Header";
 
 export const Hero = (props) => {
   const [hero, setHero] = useState({});
-  const [heroId, setHeroId] = useState(useParams().heroId);
+  const [heroId] = useState(useParams().heroId);
 
   useEffect(() => {
-    getHero(heroId).then((items) => {
-      setHero(items.data.results[0]);
-    });
+    getHero(heroId)
+      .then((items) => {
+        setHero(items.data.results[0]);
+      })
+      .catch((error) => {});
   }, [heroId]);
 
   return (
     <>
       <Header />
       <WrapperHero>
-        {/* <BannerHero src={hero.thumbnail.path + "." + hero.thumbnail.extension} /> */}
-        <BannerHero />
+        {!!hero.thumbnail && (
+          <BannerHero
+            src={hero.thumbnail.path + "." + hero.thumbnail.extension}
+          />
+        )}
         <ContentHero>
-          <p>Nome: {hero.name}</p>
-          <p>Descrição: {hero.name}</p>
+          <p>
+            <b>Nome: </b> {hero.name}
+          </p>
+          {!!hero.series && (
+            <p>
+              <b>Series: </b>
+              {hero.series.items.map((item, i, arr) => {
+                if (arr.length - 1 === i) {
+                  return item.name + ".";
+                } else {
+                  return item.name + ", ";
+                }
+              })}
+            </p>
+          )}
+          {!!hero.comics && (
+            <p>
+              <b>Quadrinhos</b>:
+              {hero.comics.items.map((item, i, arr) => {
+                if (arr.length - 1 === i) {
+                  return item.name + ".";
+                } else {
+                  return item.name + ", ";
+                }
+              })}
+            </p>
+          )}
+
+          {!!hero.stories && (
+            <p>
+              <b>Histórias</b>:
+              {hero.stories.items.map((item, i, arr) => {
+                if (arr.length - 1 === i) {
+                  return item.name + ".";
+                } else {
+                  return item.name + ", ";
+                }
+              })}
+            </p>
+          )}
         </ContentHero>
       </WrapperHero>
     </>
@@ -31,8 +74,8 @@ export const Hero = (props) => {
 };
 
 const WrapperHero = styled.section`
-  width: 1200px;
-  min-width: 1200px;
+  width: 100%;
+  max-width: 1200px;
   margin: 50px auto 0;
   display: flex;
 `;
@@ -48,4 +91,11 @@ const BannerHero = styled.div`
 
 const ContentHero = styled.div`
   margin-left: 20px;
+  width: calc(70% - 20px);
+  p {
+    margin-bottom: 10px;
+  }
+  b {
+    font-weight: bold;
+  }
 `;

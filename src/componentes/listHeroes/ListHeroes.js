@@ -1,19 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
-import { getHeroes } from "./ListHeroes.servive";
 import { ItemHero } from "../itemHero/ItemHero";
 
-export const ListHeroes = () => {
-  const [heroes, setHeroes] = useState([]);
-
-  useEffect(() => {
-    console.log(`oi`);
-    getHeroes().then((items) => {
-      setHeroes(items.data.results);
-    });
-  }, []);
-
+export const ListHeroes = ({ heroes }) => {
   return (
     <WrapperList>
       <HeaderList>
@@ -22,16 +12,20 @@ export const ListHeroes = () => {
         <p>Eventos</p>
       </HeaderList>
       {heroes.map((item) => (
-        <ItemHero hero={item} />
+        <ItemHero key={item.id} hero={item} />
       ))}
     </WrapperList>
   );
 };
 
 const WrapperList = styled.section`
-  width: 1200px;
-  min-width: 1200px;
+  width: 100%;
+  max-width: 1200px;
   margin: 50px auto 0;
+  a {
+    color: #000;
+    text-decoration: none;
+  }
 `;
 
 const HeaderList = styled.div`
