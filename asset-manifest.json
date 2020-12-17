@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/react-bradesco-marvel/static/css/main.7cea4cbf.chunk.css",
-    "main.js": "/react-bradesco-marvel/static/js/main.590d119a.chunk.js",
-    "main.js.map": "/react-bradesco-marvel/static/js/main.590d119a.chunk.js.map",
+    "main.js": "/react-bradesco-marvel/static/js/main.f4147789.chunk.js",
+    "main.js.map": "/react-bradesco-marvel/static/js/main.f4147789.chunk.js.map",
     "runtime-main.js": "/react-bradesco-marvel/static/js/runtime-main.85184ff0.js",
     "runtime-main.js.map": "/react-bradesco-marvel/static/js/runtime-main.85184ff0.js.map",
     "static/js/2.bde0709c.chunk.js": "/react-bradesco-marvel/static/js/2.bde0709c.chunk.js",
@@ -16,6 +16,6 @@
     "static/js/runtime-main.85184ff0.js",
     "static/js/2.bde0709c.chunk.js",
     "static/css/main.7cea4cbf.chunk.css",
-    "static/js/main.590d119a.chunk.js"
+    "static/js/main.f4147789.chunk.js"
   ]
 }
